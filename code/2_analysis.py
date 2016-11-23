@@ -24,5 +24,5 @@ plt.ylabel("Percentage")
 plt.grid()
 plt.savefig("../img/percentage_song_plays.png")
 print "[SAVED] percentage_song_plays.png"
-#plt.show()
+plt.show()
 
