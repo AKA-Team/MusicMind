@@ -17,7 +17,7 @@ for i in range(10):
 
 # Show bar plot of the analysis
 n = len(number_listens)
-x = range(n) 
+x = range(n)
 width = 1/1.5
 plt.bar(x, number_listens, width, color="blue")
 plt.xlabel("Plays"); plt.ylabel("%")
