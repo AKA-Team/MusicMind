@@ -1,5 +1,9 @@
 import pandas as pd
 
+"""
+A basic recommendation system can be simply to recommend the most listened songs.
+"""
+
 # Loading the DB
 print "[LOADING] train_triplets..."
 plays_header = ['userID','songID','plays']
