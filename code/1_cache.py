@@ -6,8 +6,8 @@ tracks_header = ['trackID','songID','artist','title']
 
 print "[LOADING] train_triplets"
 plays_df = pd.read_csv('../csv/train_triplets.csv', sep='\t', names=plays_header)
-print "[LOADING] songs_to_tracks.csv"
-songs2tracks_df = pd.read_csv('../csv/song_to_tracks', sep='\t', names=songs2tracks_header)
+print "[LOADING] songs_to_tracks"
+songs2tracks_df = pd.read_csv('../csv/song_to_tracks.csv', sep='\t', names=songs2tracks_header)
 print "[LOADING] unique_tracks"
 tracks_df = pd.read_csv('../csv/unique_tracks.csv', sep='\t', names=tracks_header)
 
