@@ -1,25 +1,25 @@
 import graphlab as gl
+import sqlite3
 from graphlab import SFrame as sf
-import pandas as pd
 
-# Load datasets
+# Load dataset
+print "[LOADING] data"
+conn = sqlite3.connect('../sqlite/msd.sqlite3')
+data= gl.SFrame.from_sql(conn, "SELECT * FROM train where plays >2")
 
-plays_header = ['user_id','item_id','rating']
+# Create Training set and test set
+train_data, test_data = gl.recommender.util.random_split_by_user(data, 'userID', 'songID')
 
-print "[LOADING] train_triplets"
+# Create the model
+model = gl.recommender.create(train_data, 'userID', 'songID')
 
-df= pd.read_csv('../csv/train_triplets.csv', sep='\t', names=plays_header)
+# Recommend to users
+recom = model.recommend()
 
-data=sf(data=df)
+# Show results
+recom.show()
 
-model = gl.item_similarity_recommender.create(data, target="rating",similarity_type='cosine')
+# Print result
+print recom
 
-prediction= model.predict(data);
-
-recommendation= model.recommend();
-
-recommendation.save('../similarities')
-
-print prediction
-
-print recommendation
+raw_input("...")
